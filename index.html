@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="ku" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="باشترین سێرڤەری FiveM لە کوردستان -  کوردستان کۆمونیتی">
+    <meta name="keywords" content="FiveM, Kurdistan, Roleplay, GTA, Server">
+    <meta name="author" content="Kurdistan Community Team">
+    <meta property="og:title" content="کوردستان کۆمنیتی- سێرڤەری FiveM">
+    <meta property="og:description" content="باشترین سێرڤەری FiveM لە کوردستان">
+    <meta property="og:image" content="/assets/images/logo.png">
+    <meta property="og:url" content="https://Kurdistan Community">
+    <title>کوردستان کۆمنیتی| سێرڤەری FiveM</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
+    
+    <!-- Preload fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loading">
+        <div class="loading-spinner"></div>
+        <p>چاوەڕوان بە...</p>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator" id="scrollIndicator"></div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="nav-container">
+            <div class="logo">
+                <img src="assets/images/logo.png" alt="Logo" class="logo-img">
+                🏙️ کوردستان کومنیتی
+            </div>
+            <nav>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#home" class="nav-link">سەرەکی</a></li>
+                    <li><a href="#features" class="nav-link">تایبەتمەندی</a></li>
+                    <li><a href="#stats" class="nav-link">ئامار</a></li>
+                    <li><a href="#rules" class="nav-link">یاساکان</a></li>
+                    <li><a href="#download" class="nav-link">داونلۆد</a></li>
+                    <li><a href="#contact" class="nav-link">پەیوەندی</a></li>
+                </ul>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Server Status Widget -->
+    <div class="server-status" id="serverStatus">
+        <div class="status-header">
+            <h3>🖥️ دۆخی سێرڤەر</h3>
+            <button class="refresh-btn" onclick="updateServerStatus()" title="نوێکردنەوە">🔄</button>
+        </div>
+        
+        <div class="status-grid">
+            <div class="status-item">
+                <span class="status-label">دۆخ:</span>
+                <span class="status-value status-online" id="serverStatusText">🟢 ئۆنلاین</span>
+            </div>
+            
+            <div class="status-item">
+                <span class="status-label">یاریکەر:</span>
+                <span class="status-value" id="playerCount">127/200</span>
+            </div>
+            
+            <div class="status-item">
+                <span class="status-label">Ping:</span>
+                <span class="status-value" id="ping">45ms</span>
+            </div>
+            
+            <div class="status-item">
+                <span class="status-label">ئاپتایم:</span>
+                <span class="status-value" id="uptime">99.9%</span>
+            </div>
+        </div>
+        
+        <div class="status-buttons">
+            <button class="btn btn-primary connect-btn" onclick="connectToServer()">
+                🎮 یاری بکە
+            </button>
+            <button class="btn btn-secondary copy-btn" onclick="copyServerIP()">
+                📋 کۆپیی IP
+            </button>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-background">
+            <div class="hero-particles"></div>
+        </div>
+        
+        <div class="hero-content">
+            <h1 class="hero-title">کوردستان کومنیتی</h1>
+            <p class="hero-subtitle">باشترین سێرڤەری FiveM لە کوردستان</p>
+            <p class="hero-description">
+                جیهانێکی ڕیاڵی کوردی بۆ Roleplay لەگەڵ هەزاران یاریکەری ئۆنلاین
+            </p>
+            
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary btn-large" onclick="connectToServer()">
+                    🎮 یاری بکە ئێستا
+                </a>
+                <a href="#features" class="btn btn-secondary btn-large">
+                    📖 زیاتر بزانە
+                </a>
+            </div>
+            
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <span class="stat-number">2500+</span>
+                    <span class="stat-label">یاریکەر</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="stat-number">127</span>
+                    <span class="stat-label">ئۆنلاین</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label">چالاک</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator-arrow">
+            <span>⬇</span>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features section-padding" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">تایبەتمەندییەکان</h2>
+                <p class="section-subtitle">
+                    هەموو ئەو خزمەتگوزارییانەی کە پێویستت پێیەتی بۆ ئەزموونێکی نایاب
+                </p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon">🚗</div>
+                    <h3 class="feature-title">ئۆتۆمبێلی کۆستۆم</h3>
+                    <p class="feature-description">
+                        سەدان جۆری ئۆتۆمبێلی کوردی و جیهانی لەگەڵ سیستەمی تونکردن و گۆڕانکاری
+                    </p>
+                    <ul class="feature-list">
+                        <li>✅ 200+ جۆری ئۆتۆمبێل</li>
+                        <li>✅ سیستەمی تونکردن</li>
+                        <li>✅ ئۆتۆمبێلی کوردی</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon">👮</div>
+                    <h3 class="feature-title">پۆلیس و دادگا</h3>
+                    <p class="feature-description">
+                        سیستەمی تەواوی یاسا و ڕێکخستن لەگەڵ دادگا و زیندان و چاودێری
+                    </p>
+                    <ul class="feature-list">
+                        <li>✅ سیستەمی یاسایی تەواو</li>
+                        <li>✅ دادگا و پاریزەر</li>
+                        <li>✅ زیندان و چاودێری</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon">🏥</div>
+                    <h3 class="feature-title">نەخۆشخانە</h3>
+                    <p class="feature-description">
+                        سیستەمی تەندروستی پێشکەوتوو لەگەڵ پزیشک و دەرمان و نەشتەرگەری
+                    </p>
+                    <ul class="feature-list">
+                        <li>✅ پزیشک و پەرستار</li>
+                        <li>✅ نەشتەرگەری</li>
+                        <li>✅ فریاکەوتن</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-icon">💼</div>
+                    <h3 class="feature-title">کارە جۆراوجۆرەکان</h3>
+                    <p class="feature-description">
+                        دەیان جۆری کار بۆ پارە کۆکردنەوە: شۆفێر، چاکەر، فرۆشیار، و زیاتر
+                    </p>
+                    <ul class="feature-list">
+                        <li>✅ 45+ جۆری کار</li>
+                        <li>✅ ئابووری ڕیاڵی</li>
+                        <li>✅ سیستەمی مووچە</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="feature-icon">🏠</div>
+                    <h3 class="feature-title">ماڵ و بزنس</h3>
+                    <p class="feature-description">
+                        کڕین و فرۆشتنی خانوو و دووکان لەگەڵ سیستەمی ئابووری ڕیاڵی
+                    </p>
+                    <ul class="feature-list">
+                        <li>✅ خانووی تایبەت</li>
+                        <li>✅ دووکانی خۆت</li>
+                        <li>✅ کۆمپانیا دروستکردن</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="feature-icon">🎭</div>
+                    <h3 class="feature-title">کۆمەڵگا</h3>
+                    <p class="feature-description">
+                        کۆمەڵگەیەکی چالاک و درێژخایەن لەگەڵ ڕووداو و پێشبڕکێی ڕۆژانە
+                    </p>
+                    <ul class="feature-list">
+                        <li>✅ ڕووداوی هەفتانە</li>
+                        <li>✅ پێشبڕکێ و خەڵات</li>
+                        <li>✅ کۆمەڵگای چالاک</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="stats section-padding" id="stats">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">ئاماری سێرڤەر</h2>
+                <p class="section-subtitle">ئامارەکانی ڕاستەقینەی  کوردستان کومنیتی</p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="stat-icon">👥</div>
+                    <span class="stat-number" data-count="2500">0</span>
+                    <span class="stat-label">یاریکەری تۆمارکراو</span>
+                </div>
+                
+                <div class="stat-card" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="stat-icon">🎮</div>
+                    <span class="stat-number" data-count="127">0</span>
+                    <span class="stat-label">یاریکەری ئۆنلاین</span>
+                </div>
+                
+                <div class="stat-card" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="stat-icon">💼</div>
+                    <span class="stat-number" data-count="45">0</span>
+                    <span class="stat-label">جۆری کار</span>
+                </div>
+                
+                <div class="stat-card" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="stat-icon">📊</div>
+                    <span class="stat-number" data-count="99">0</span>
+                    <span class="stat-label">% ئاپتایم</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rules Section -->
+    <section class="rules section-padding" id="rules">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">یاساکانی سێرڤەر</h2>
+                <p class="section-subtitle">بۆ ئەزموونێکی باش، ئەم یاسایانە پەیڕەو بکە</p>
+            </div>
+            
+            <div class="rules-grid">
+                <div class="rule-card" data-aos="slide-right">
+                    <div class="rule-number">1</div>
+                    <h3>ڕێز بۆ یەکتر</h3>
+                    <p>هیچ جۆرە توندوتیژی یان ناوپێکردن ڕێگە پێ نادرێت</p>
+                </div>
+                
+                <div class="rule-card" data-aos="slide-left">
+                    <div class="rule-number">2</div>
+                    <h3>Roleplay کوالیتی</h3>
+                    <p>بەردەوام لە کاراکتەرەکەت بمێنەرەوە و ڕیاڵی بە</p>
+                </div>
+                
+                <div class="rule-card" data-aos="slide-right">
+                    <div class="rule-number">3</div>
+                    <h3>نا بۆ هاک</h3>
+                    <p>بەکارهێنانی هاک یان چیت دووبارە دەربکرێیت</p>
+                </div>
+                
+                <div class="rule-card" data-aos="slide-left">
+                    <div class="rule-number">4</div>
+                    <h3>زمانی پاک</h3>
+                    <p>جەخت کردنەوە لەسەر زمانی پاک و ئەخلاقی باش</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section class="download section-padding" id="download">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">داونلۆد و دامەزراندن</h2>
+                <p class="section-subtitle">هەموو ئەو شتانەی پێویستت بۆ دەستپێکردن</p>
+            </div>
+            
+            <div class="download-grid">
+                <div class="download-card" data-aos="fade-up">
+                    <div class="download-icon">🎮</div>
+                    <h3>FiveM Client</h3>
+                    <p>سەرەتا FiveM داونلۆد و دامەزرێنە</p>
+                    <a href="https://fivem.net" class="btn btn-primary" target="_blank">
+                        داونلۆد FiveM
+                    </a>
+                </div>
+                
+                <div class="download-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="download-icon">📱</div>
+                    <h3>Discord</h3>
+                    <p>بەشداری کۆمەڵگای ئێمە بکە لە Discord</p>
+                    <a href="#" class="btn btn-secondary">
+                        بەشداری بکە
+                    </a>
+                </div>
+                
+                <div class="download-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="download-icon">📋</div>
+                    <h3>ڕێنمایی</h3>
+                    <p>فێربوونی چۆنیەتی یاری کردن</p>
+                    <a href="#" class="btn btn-outline">
+                        ڕێنمایی بخوێنەرەوە
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <h3>🏙️ کوردستان کۆمنیتی </h3>
+                        <p>
+                            باشترین سێرڤەری FiveM لە کوردستان. ئێمە بەردەوام کار دەکەین 
+                            بۆ پێشکەشکردنی باشترین ئەزموونی یاری بۆ کۆمەڵگای کوردی.
+                        </p>
+                        <div class="social-links">
+                            <a href="#" class="social-link" title="Discord" aria-label="Discord">💬</a>
+                            <a href="#" class="social-link" title="Instagram" aria-label="Instagram">📷</a>
+                            <a href="#" class="social-link" title="YouTube" aria-label="YouTube">📺</a>
+                            <a href="#" class="social-link" title="Telegram" aria-label="Telegram">📱</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>🔗 بەستەرە گرنگەکان</h4>
+                    <ul class="footer-links">
+                        <li><a href="#rules">📋 یاساکانی سێرڤەر</a></li>
+                        <li><a href="#download">📥 داونلۆدی یاری</a></li>
+                        <li><a href="#support">🎧 پشتگیری</a></li>
+                        <li><a href="#forum">💭 فۆرمی کۆمەڵگا</a></li>
+                        <li><a href="#gallery">🖼️ گالەری</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>🖥️ زانیاری سێرڤەر</h4>
+                    <ul class="footer-info">
+                        <li>
+                            <span>📍 ئادرەس:</span> 
+                            <code>Kurdistan Community:30120</code>
+                        </li>
+                        <li>
+                            <span>🌐 سەردان:</span> 
+                            <span>24/7</span>
+                        </li>
+                        <li>
+                            <span>👥 ئەندامان:</span> 
+                            <span>200 کەس</span>
+                        </li>
+                        <li>
+                            <span>📊 ڤێرژن:</span> 
+                            <span>FiveM Latest</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>📞 پەیوەندی</h4>
+                    <ul class="footer-contact">
+                        <li>
+                            <span>📧 ئیمەیڵ:</span>
+                            <a href="mailto:info@kurdistan.community">info@kurdistan.community</a>
+                        </li>
+                        <li>
+                            <span>💬 Discord:</span>
+                            <span>Kurdistan Community</span>
+                        </li>
+                        <li>
+                            <span>📱 تێلیگرام:</span>
+                            <a href="#">@kurdistan.community</a>
+                        </li>
+                        <li>
+                            <span>🕐 کاتی وەڵام:</span>
+                            <span>9:00 - 22:00</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p>&copy; ٢٠٢٥ کوردستان کۆمونیتی - هەموو مافەکان پارێزراون</p>
+                    <p>دروستکراوە بە ❤️ لە کوردستان</p>
+                </div>
+                <div class="footer-bottom-links">
+                    <a href="#privacy">سیاسەتی نهێنی</a>
+                    <a href="#terms">مەرجەکان</a>
+                    <a href="#cookies">کوکیکان</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="گەڕانەوە بۆ سەرەوە">
+        ↑
+    </button>
+
+    <!-- JavaScript Files -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/server-status.js"></script>
+    
+    <!-- AOS Animation Library (optional) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS if loaded
+        if (typeof AOS !== 'undefined') {
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out',
+                once: true
+            });
+        }
+    </script>
+</body>
+</html>
